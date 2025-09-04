@@ -15,7 +15,7 @@ export class Notify {
     };
 
     if (!auth.user || !auth.pass || auth.user === "" || auth.pass === "") {
-      throw new Error("未配置邮箱。");
+      throw new Error("Invalid address.");
     }
 
     const transporter = nodemailer.createTransport({
@@ -79,14 +79,14 @@ export class Notify {
     }
   </main>
   <footer class="dify-footer">
-    <span>Dify工作流定时助手v${pkg.version}</span> |
+    <span>DifySchedulerv${pkg.version}</span> |
     <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/leochen-g" target="_blank">Leo_chen</a></span>
   </footer>
 </section>
 `.trim();
 
     await transporter.sendMail({
-      from: `Dify工作流定时助手 <${auth.user}>`, // sender address（'"Fred Foo 👻" <foo@example.com>'）
+      from: `DifyScheduler <${auth.user}>`, // sender address（'"Fred Foo 👻" <foo@example.com>'）
       to: env.EMAIL_TO, // list of receivers
       subject: options.title, // Subject line
       // text, // plain text body
@@ -108,7 +108,7 @@ export class Notify {
   async pushplus(options) {
     const token = env.PUSHPLUS_TOKEN;
     if (!token || token === "") {
-      throw new Error("未配置PushPlus Token。");
+      throw new Error("Invalid PushPlus Token.");
     }
 
     const config = {
@@ -137,7 +137,7 @@ export class Notify {
   async serverPush(options) {
     const token = env.SERVERPUSHKEY;
     if (!token || token === "") {
-      throw new Error("未配置Server酱 key。");
+      throw new Error("Invalid Server key.");
     }
 
     const config = {
@@ -160,7 +160,7 @@ export class Notify {
   async dingtalkWebhook(options) {
     const url = env.DINGDING_WEBHOOK;
     if (!url || url === "") {
-      throw new Error("未配置钉钉Webhook。");
+      throw new Error("Invalid DINGDING_WEBHOOK.");
     }
 
     return axios.post(url, {
@@ -178,7 +178,7 @@ export class Notify {
   async feishuWebhook(options) {
     const url = env.FEISHU_WEBHOOK;
     if (!url || url === "") {
-      throw new Error("未配置飞书Webhook。");
+      throw new Error("Invalid FEISHU_WEBHOOK.");
     }
 
     return axios.post(url, {
@@ -209,7 +209,7 @@ export class Notify {
   async wecomWebhook(options) {
     const url = env.WEIXIN_WEBHOOK;
     if (!url || url === "") {
-      throw new Error("未配置企业微信Webhook。");
+      throw new Error("Invalid WEIXIN_WEBHOOK.");
     }
 
     return axios.post(url, {
