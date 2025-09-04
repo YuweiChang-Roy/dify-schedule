@@ -63,9 +63,6 @@ export class Notify {
   }
 </style>
 <section>
-  <header class="dify-header">
-    <img src="cid:logo-site.png" width="120" height="24" alt="dify" />
-  </header>
   ${
     this.newVersion.has
       ? `<a class="dify-update-tip" href="${this.newVersion.url}" target="_blank"><span>Dify工作流定时助手 ${this.newVersion.name} 现在可用 ›</span></a>`
@@ -78,10 +75,6 @@ export class Notify {
         : `<pre style="margin: 0;">${options.content}</pre>`
     }
   </main>
-  <footer class="dify-footer">
-    <span>DifySchedulerv${pkg.version}</span> |
-    <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/leochen-g" target="_blank">Leo_chen</a></span>
-  </footer>
 </section>
 `.trim();
 
